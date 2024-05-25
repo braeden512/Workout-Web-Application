@@ -15,13 +15,13 @@ Braeden Treutel
 <br><br>
   - Sign-up:
 
-![github1](https://github.com/braeden512/Workout-Web-Application/assets/106418221/d628f40d-d7a3-470b-af83-8aa12123e4d9)
-<br>
+    ![github1](https://github.com/braeden512/Workout-Web-Application/assets/106418221/d628f40d-d7a3-470b-af83-8aa12123e4d9)
+    <br>
 
   - Home page:
 
-![github2](https://github.com/braeden512/Workout-Web-Application/assets/106418221/26e583e8-d2c0-4c8d-868a-6c6e12e307c0)
-<br>
+    ![github2](https://github.com/braeden512/Workout-Web-Application/assets/106418221/26e583e8-d2c0-4c8d-868a-6c6e12e307c0)
+    <br>
 
   - Graph:
 
