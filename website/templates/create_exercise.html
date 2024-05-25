@@ -1,0 +1,33 @@
+{%  extends "base.html" %}
+{% block title %}Create Exercise{% endblock %}
+
+{% block content %}
+
+<br />
+<h1>Enter Exercise:</h1>
+<br />
+
+<form method="POST">
+    <label for="exercise">Exercise:</label><br>
+
+    <select name="exercise" id="exercise" class="form-control">
+        <option value="Benchpress">Benchpress</option>
+        <option value="Leg Press">Leg Press</option>
+        <option value="Deadlift">Deadlift</option>
+        <option value="Squat">Squat</option>
+    </select><br>
+
+    <label for="weight">Weight:</label><br>
+    <input type="number" value="100" id="weight" name="weight" class="form-control" /><br>
+
+    <label for="reps">Repetitions:</label><br>
+    <input type="number" value="8" id="reps" name="reps" class="form-control" /><br>
+
+    <label for="notes">Personal Notes:</label><br>
+    <textarea name="notes" id="notes" class="form-control"></textarea>
+
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Add Exercise</button>
+    </div>
+</form>
+{% endblock %}

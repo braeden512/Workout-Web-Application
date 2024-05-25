@@ -1,0 +1,137 @@
+{%  extends "base.html" %}
+{% block title %}Squat{% endblock %}
+
+{% block content %}
+
+<form method="POST" name="enter">
+    <br />
+    <div align="center">
+        <input type="hidden" name="btn_identifier" value="enter_exercise" />
+        <button type="submit" class="btn btn-primary">Enter Exercise</button>
+    </div>
+    <br />
+</form>
+
+<div align="center">
+    <h1>Squat Exercises</h1>
+</div>
+<div align="center">
+    <label>Filter Exercises</label>
+    <form method="POST" name="filter">
+        <select name="filter_exercise" id="filter_exercise" style="max-width:20%" class="form-control" onchange="this.form.submit()">
+            <option value="Empty">All</option>
+            <option value="Benchpress">Benchpress</option>
+            <option value="Leg Press">Leg Press</option>
+            <option value="Deadlift">Deadlift</option>
+            <option value="Squat" selected>Squat</option>
+        </select>
+        <input type="hidden" name="btn_identifier" value="filter_exercise" />
+    </form><br />
+</div>
+
+<ul class="list-group list-group-flush" id="exercises">
+    {% for exercise in user.exercises %}
+        {% if exercise.type_of_exercise == 'Squat' %}
+            <li class="list-group-item">
+                <p>Date: {{ exercise.date }}</p>
+                <p>Time: {{ exercise.time }}</p>
+                <p>Exercise: {{ exercise.type_of_exercise }}</p>
+                <p>Weight: {{ exercise.weight }} lbs</p>
+                <p>Reps: {{ exercise.reps }}</p>
+                <p>Notes: {{ exercise.text }}</p>
+
+                <!-- Collapsible and content -->
+                <button type="button" class="collapsible">Stats</button>
+                <div class="content">
+                    <br />
+                    <p>Calculated One Rep Max: {{ exercise.onerepmax }} lbs</p>
+                </div>
+
+                <button type="button" class="close" onClick="deleteExercise({{ exercise.id }})">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+<!-- Graph part -->
+<div class="chartBox" align="center">
+    <canvas id="myChart"></canvas>
+    <br />
+    <p>Your one-rep-max is calculated using the following formula:</p>
+    <p>Weight / ( 1.0278 - ( 0.0278 x Number of Repetitions ) )</p>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
+<script>
+    // setup 
+    const data = {
+        labels: {{ labels | tojson }},
+        datasets: [
+            {
+                label: 'Squat',
+                backgroundColor: 'rgb(94, 82, 255)',
+                borderColor: 'rgb(74, 65, 205)',
+                fill: 'stack',
+                data: {{ data | tojson}},
+            },
+        ]
+    };
+
+    // config 
+    const config = {
+      type: 'line',
+      data,
+      options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Your one-rep-max over time',
+                padding: 20,
+                font: {
+                        size: 40
+                },
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    font: {
+                        size: 18
+                    },
+                },
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Set Number',
+                    padding: 10,
+                    font: {
+                        size: 27
+                    },
+                },
+            },
+            y: {
+                beginAtZero: false,
+                title: {
+                    display: true,
+                    text: 'One-rep-max calculation (in lbs)',
+                    padding: 30,
+                    font: {
+                        size: 20
+                    },
+                }
+            }
+        }
+      }
+    };
+
+    // render init block
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+</script>
+{% endblock %}
