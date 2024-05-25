@@ -1,5 +1,6 @@
+--------------------------------
 **Workout Web Application**
-<br>
+<br><br>
 Braeden Treutel
 --------------------------------
 <br><br>
