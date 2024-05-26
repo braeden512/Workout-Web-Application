@@ -11,7 +11,7 @@ Braeden Treutel
 <br><br>
 
 - **Pictures**
-<br>
+  <br>
   - Sign-up:
 
     ![github1](https://github.com/braeden512/Workout-Web-Application/assets/106418221/d628f40d-d7a3-470b-af83-8aa12123e4d9)
