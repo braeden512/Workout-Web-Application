@@ -4,6 +4,7 @@
 Braeden Treutel
 <br><br>
 - **Description**
+  <br>
   This website has a database for users to sign up, log in, and record their workouts under their own profile.
   <br>
   It has options for recording exercises, including sets, reps, and weight.
